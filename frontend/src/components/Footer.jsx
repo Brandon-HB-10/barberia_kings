@@ -20,11 +20,11 @@ export default function Footer() {
               La barbería con más estilo urbano de Apizaco. Cortes, diseños, color y barba con actitud de calle.
             </p>
             <div className="flex gap-3">
-              <a href="https://instagram.com/Yoel.cutts.mx" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/522411327555?text=Hola%2C%20vi%20tu%20demo%20para%20barber%C3%ADas%20y%20me%20interesa%20una%20p%C3%A1gina%20similar." target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-dark-lighter border border-dark-border flex items-center justify-center text-ice-dim hover:text-street-gold hover:border-street-gold transition-all">
                 <FaInstagram />
               </a>
-              <a href="https://wa.me/522461473968" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/522411327555" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-dark-lighter border border-dark-border flex items-center justify-center text-ice-dim hover:text-street-green hover:border-street-green transition-all">
                 <FaWhatsapp />
               </a>
@@ -93,17 +93,17 @@ export default function Footer() {
     <p className="flex items-center gap-3">
       <FaPhone className="text-ice-dim flex-shrink-0" />
       <a
-        href="tel:2461473968"
+        href="tel:2411327555"
         className="hover:text-street-green transition-colors"
       >
-        246 147 3968
+        241 132 7555
       </a>
     </p>
 
     <p className="flex items-center gap-3">
       <FaWhatsapp className="text-street-green flex-shrink-0" />
       <a
-        href="https://wa.me/522461473968"
+        href="https://wa.me/522411327555"
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-street-green transition-colors"
@@ -115,12 +115,12 @@ export default function Footer() {
     <p className="flex items-center gap-3">
       <FaInstagram className="text-ice-dim flex-shrink-0" />
       <a
-        href="https://instagram.com/Yoel.cutts.mx"
+        href="https://instagram.com/bran.hb"
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-street-green transition-colors"
       >
-        @Yoel.cutts.mx
+        @bran.hb
       </a>
     </p>
   </div>

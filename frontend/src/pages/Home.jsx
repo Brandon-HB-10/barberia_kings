@@ -500,7 +500,7 @@ function Home() {
                   </motion.button>
 
                   <motion.a
-                    href="https://wa.me/522461473968"
+                    href="https://wa.me/522411327555?text=Hola%2C%20vi%20tu%20demo%20para%20barber%C3%ADas%20y%20me%20interesa%20una%20p%C3%A1gina%20similar."
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{
@@ -613,14 +613,14 @@ function Home() {
                   </p>
 
                   <a
-                    href="https://instagram.com/Yoel.cutts.mx"
+                    href="https://instagram.com/bran.hb"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm text-ice transition hover:text-street-green"
                   >
                     <FaInstagram />
 
-                    @Yoel.cutts.mx
+                    @bran.hb
                   </a>
                 </motion.div>
               </div>
