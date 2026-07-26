@@ -99,12 +99,12 @@ export default function Gallery() {
 
         <div className="text-center mt-10">
           <a 
-            href="https://instagram.com/Yoel.cutts.mx" 
+            href="https://instagram.com/bran.hb" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-ice-dim hover:text-street-gold transition-colors text-sm"
           >
-            <FaInstagram /> Ver más en @Yoel.cutts.mx
+            <FaInstagram /> Ver más en @bran.hb
           </a>
         </div>
         <p className="text-center text-ice-dim/50 text-xs mt-4">
