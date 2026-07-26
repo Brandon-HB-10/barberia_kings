@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaTimes, FaExpand, FaInstagram } from 'react-icons/fa'
 
 const images = [
-  { id: 1, src: '/gallery/corte1.jpg', alt: 'Corte crop Clipper Kings', category: 'Cortes' },
-  { id: 2, src: '/gallery/corte2.jpg', alt: 'Diseño con graffiti', category: 'Diseños' },
-  { id: 3, src: '/gallery/barba1.jpg', alt: 'Arreglo de barba', category: 'Barbas' },
-  { id: 4, src: '/gallery/local1.jpg', alt: 'Interior de la barbería', category: 'Local' },
-  { id: 5, src: '/gallery/corte3.jpg', alt: 'Fade perfecto', category: 'Cortes' },
-  { id: 6, src: '/gallery/corte_tijera.jpg', alt: 'Coloración', category: 'Color' },
+  { id: 1, src: '/galeria/corte1.jpg', alt: 'Corte crop Clipper Kings', category: 'Cortes' },
+  { id: 2, src: '/galeria/corte2.jpg', alt: 'Diseño ', category: 'Diseños' },
+  { id: 3, src: '/galeria/barba1.jpg', alt: 'Arreglo de barba', category: 'Barbas' },
+  { id: 4, src: '/galeria/local1.jpg', alt: 'Interior de la barbería', category: 'Local' },
+  { id: 5, src: '/galeria/corte3.jpg', alt: 'Low Fade', category: 'Cortes' },
+  { id: 6, src: '/galeria/corte_tijera.jpg', alt: 'Mod Cut', category: 'Tijeras' },
 ]
 
-const categories = ['Todos', 'Cortes', 'Barbas', 'Diseños', 'Color', 'Local']
+const categories = ['Todos', 'Cortes', 'Barbas', 'Diseños', 'Tijeras', 'Local']
 
 export default function Gallery() {
   const [filter, setFilter] = useState('Todos')
@@ -77,14 +77,16 @@ export default function Gallery() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 whileHover={{ scale: 1.02 }}
                 onClick={() => setSelectedImage(img)}
-                className={`relative group cursor-pointer overflow-hidden rounded-2xl border border-dark-border hover:border-street-green/50 transition-colors ${
-                  i === 0 || i === 3 ? 'sm:row-span-2' : ''
-                }`}
+                className="relative group cursor-pointer overflow-hidden rounded-2xl border border-dark-border hover:border-street-green/50 transition-colors"
               >
-                <div className={`bg-dark-lighter w-full ${i === 0 || i === 3 ? 'h-80 sm:h-full' : 'h-64'} shimmer-bg`} />
-                <div className={`absolute inset-0 bg-gradient-to-br from-street-green/20 to-street-blue/20 flex items-center justify-center`}>
-                  <span className="text-ice-dim text-sm font-bold uppercase tracking-wider opacity-50">{img.category}</span>
-                </div>
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-br from-street-green/10 to-street-blue/10" />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -106,7 +108,7 @@ export default function Gallery() {
           </a>
         </div>
         <p className="text-center text-ice-dim/50 text-xs mt-4">
-          Reemplaza las imágenes en la carpeta <code className="text-street-green">/public/gallery/</code>
+          Reemplaza las imágenes en la carpeta <code className="text-street-green">/public/galeria/</code>
         </p>
       </div>
 
@@ -138,15 +140,11 @@ export default function Gallery() {
               onClick={(e) => e.stopPropagation()}
               className="relative max-w-4xl w-full"
             >
-              <div className="aspect-video bg-dark-lighter rounded-2xl border border-dark-border overflow-hidden shadow-[0_0_60px_rgba(0,255,136,0.15)]">
-                <div className="w-full h-full bg-gradient-to-br from-street-green/10 to-street-blue/10 flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-ice font-bold text-lg mb-2">{selectedImage.alt}</p>
-                    <p className="text-ice-dim text-sm">{selectedImage.category}</p>
-                    <p className="text-ice-dim/50 text-xs mt-4">Coloca tu imagen en /public/gallery/</p>
-                  </div>
-                </div>
-              </div>
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="w-full h-full object-contain"
+              />
             </motion.div>
           </motion.div>
         )}
