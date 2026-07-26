@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaTimes, FaExpand, FaInstagram } from 'react-icons/fa'
 
 const images = [
-  { id: 1, src: '/gallery/corte1.jpg', alt: 'Corte urbano Clipper Kings', category: 'Cortes' },
+  { id: 1, src: '/gallery/corte1.jpg', alt: 'Corte crop Clipper Kings', category: 'Cortes' },
   { id: 2, src: '/gallery/corte2.jpg', alt: 'Diseño con graffiti', category: 'Diseños' },
   { id: 3, src: '/gallery/barba1.jpg', alt: 'Arreglo de barba', category: 'Barbas' },
   { id: 4, src: '/gallery/local1.jpg', alt: 'Interior de la barbería', category: 'Local' },
   { id: 5, src: '/gallery/corte3.jpg', alt: 'Fade perfecto', category: 'Cortes' },
-  { id: 6, src: '/gallery/color1.jpg', alt: 'Coloración', category: 'Color' },
+  { id: 6, src: '/gallery/corte_tijera.jpg', alt: 'Coloración', category: 'Color' },
 ]
 
 const categories = ['Todos', 'Cortes', 'Barbas', 'Diseños', 'Color', 'Local']
