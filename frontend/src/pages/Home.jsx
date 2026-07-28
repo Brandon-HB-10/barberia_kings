@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react'
-import {
-  motion,
-  useScroll,
-  useTransform
-} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import {
   FaStar,
@@ -52,28 +48,6 @@ function Home() {
 
   const [submitting, setSubmitting] = useState(false)
   const [selectedService, setSelectedService] = useState(null)
-
-
-  const { scrollYProgress } = useScroll()
-
-  const heroOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.15],
-    [1, 0]
-  )
-
-  const heroScale = useTransform(
-    scrollYProgress,
-    [0, 0.15],
-    [1, 0.95]
-  )
-
-  const heroY = useTransform(
-    scrollYProgress,
-    [0, 0.15],
-    [0, -50]
-  )
-
 
 
   useEffect(() => {
@@ -330,122 +304,63 @@ function Home() {
 
   return (
     <div className="overflow-x-hidden bg-dark">
-      {/* ===== PARTÍCULAS DEL FONDO ===== */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {[...Array(6)].map((_, index) => (
-          <motion.div
-            key={index}
-            className="absolute rounded-full opacity-[0.035] blur-3xl"
+      {/* ===== HERO EDITORIAL OPTIMIZADO ===== */}
+      <section
+        id="inicio"
+        className="relative min-h-[100svh] px-3 pb-6 pt-24 sm:px-5 lg:px-6"
+      >
+        <div className="relative mx-auto min-h-[calc(100svh-7.5rem)] max-w-[1600px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#090909] sm:rounded-[2.25rem]">
+          {/* Fondo estático: conserva profundidad sin filtros ni animaciones pesadas */}
+          <div
+            className="absolute inset-0 pointer-events-none"
             style={{
-              width: Math.random() * 300 + 100,
-              height: Math.random() * 300 + 100,
-              background: '#65FFC5',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, 20, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: index * 0.5
+              background: (
+                'radial-gradient(circle at 16% 18%, rgba(101,255,197,0.08), transparent 34%), '
+                + 'radial-gradient(circle at 84% 72%, rgba(77,156,255,0.07), transparent 36%), '
+                + 'linear-gradient(135deg, #0c0c0c 0%, #060606 100%)'
+              )
             }}
           />
-        ))}
-      </div>
 
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.025]"
+            style={{
+              backgroundImage: (
+                'linear-gradient(rgba(255,255,255,0.22) 1px, transparent 1px), '
+                + 'linear-gradient(90deg, rgba(255,255,255,0.22) 1px, transparent 1px)'
+              ),
+              backgroundSize: '72px 72px'
+            }}
+          />
 
-      {/* ===== HERO EDITORIAL ===== */}
-      <motion.section
-        id="inicio"
-        style={{
-          opacity: heroOpacity,
-          scale: heroScale,
-          y: heroY
-        }}
-        className="relative min-h-screen px-3 pb-6 pt-24 sm:px-5 lg:px-6"
-      >
-        <div className="editorial-hero relative mx-auto min-h-[calc(100vh-7.5rem)] max-w-[1600px] overflow-hidden rounded-[1.75rem] border border-white/10 sm:rounded-[2.25rem]">
-          <div className="editorial-hero-grid absolute inset-0" />
-          <div className="editorial-hero-haze absolute inset-0" />
-
-          <div className="relative z-10 flex min-h-[calc(100vh-7.5rem)] flex-col px-6 pb-7 pt-8 sm:px-10 sm:pb-9 sm:pt-10 lg:px-14 lg:pb-10 lg:pt-12 xl:px-16">
-            <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-8">
-
-              {/* Título editorial */}
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 32
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0
-                }}
-                transition={{
-                  duration: 0.85,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="lg:col-span-7"
-              >
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 12
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0
-                  }}
-                  transition={{
-                    delay: 0.15,
-                    duration: 0.55
-                  }}
-                  className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 backdrop-blur-md"
-                >
+          <div className="relative z-10 flex min-h-[calc(100svh-7.5rem)] flex-col px-6 pb-7 pt-8 sm:px-10 sm:pb-9 sm:pt-10 lg:px-14 lg:pb-10 lg:pt-12 xl:px-16">
+            <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-8">
+              {/* Título editorial sin animaciones en la carga */}
+              <div className="lg:col-span-7">
+                <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2">
                   <span className="h-2 w-2 rounded-full bg-street-green" />
 
                   <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-ice-dim">
                     Abierto ahora · Apizaco
                   </span>
-                </motion.div>
+                </div>
 
                 <h1
-                  className="editorial-title"
+                  className="text-[clamp(4rem,14vw,10rem)] font-black leading-[0.8] tracking-[-0.065em] text-white"
                   aria-label="Clipper Kings"
                 >
-                  <span className="editorial-title-sans">
+                  <span className="block">
                     Clipper
                   </span>
 
-                  <span className="editorial-title-serif">
+                  <span className="block font-serif font-normal italic text-street-green">
                     Kings.
                   </span>
                 </h1>
-              </motion.div>
-
+              </div>
 
               {/* Mensaje, reputación y acciones */}
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 28
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0
-                }}
-                transition={{
-                  delay: 0.25,
-                  duration: 0.8,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="lg:col-span-5 lg:ml-auto lg:max-w-[470px] lg:pt-24 xl:pt-28"
-              >
+              <div className="lg:col-span-5 lg:ml-auto lg:max-w-[470px] lg:pt-20 xl:pt-24">
                 <p className="text-xl font-medium leading-[1.18] text-ice sm:text-2xl lg:text-[1.7rem]">
                   Precisión, estilo y una experiencia creada
 
@@ -481,92 +396,43 @@ function Home() {
                 </div>
 
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <motion.button
+                  <button
                     type="button"
                     onClick={() => (
                       scrollToSection('#reservar')
                     )}
-                    whileHover={{
-                      y: -2
-                    }}
-                    whileTap={{
-                      scale: 0.98
-                    }}
-                    className="btn-primary min-h-12 gap-3 px-6"
+                    className="btn-primary min-h-12 gap-3 px-6 transition-transform active:scale-[0.98]"
                   >
                     Reservar cita
 
                     <FaArrowRight className="text-sm" />
-                  </motion.button>
+                  </button>
 
-                  <motion.a
+                  <a
                     href="https://wa.me/522411327555?text=Hola%2C%20vi%20tu%20demo%20para%20barber%C3%ADas%20y%20me%20interesa%20una%20p%C3%A1gina%20similar."
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{
-                      y: -2
-                    }}
-                    whileTap={{
-                      scale: 0.98
-                    }}
-                    className="btn-secondary min-h-12 gap-3 px-6"
+                    className="btn-secondary min-h-12 gap-3 px-6 transition-transform active:scale-[0.98]"
                   >
                     <FaWhatsapp />
 
                     WhatsApp
-                  </motion.a>
+                  </a>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
+            {/* Sello visual estático y ligero */}
+            <div
+              className="mx-auto my-12 flex h-32 w-32 items-center justify-center rounded-full border border-white/10 bg-white/[0.025] sm:h-40 sm:w-40 lg:my-8 lg:h-44 lg:w-44"
+              aria-hidden="true"
+            >
+              <FaCut className="text-5xl text-white/80 sm:text-6xl" />
+            </div>
 
-            {/* Objeto central */}
-            <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 70,
-                  scale: 0.88
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1
-                }}
-                transition={{
-                  delay: 0.4,
-                  duration: 1.05,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="editorial-object-wrap"
-                aria-hidden="true"
-              >
-                <div className="editorial-object">
-                  <div className="editorial-object-ring editorial-object-ring-one" />
-                  <div className="editorial-object-ring editorial-object-ring-two" />
-
-                  <div className="editorial-object-core">
-                    <FaCut className="editorial-object-icon" />
-                  </div>
-                </div>
-              </motion.div>
-
-
-            <div className="mt-auto pt-20 sm:pt-24 lg:pt-36">
+            <div className="mt-auto">
               <div className="grid gap-7 border-t border-white/10 pt-6 md:grid-cols-[1fr_auto_1fr] md:items-end">
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 18
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0
-                  }}
-                  transition={{
-                    delay: 0.65,
-                    duration: 0.6
-                  }}
-                >
+                <div>
                   <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-ice-dim">
                     Especialistas en
                   </p>
@@ -580,34 +446,20 @@ function Home() {
                     <span className="text-ice-dim">/</span>
                     <span>Color</span>
                   </div>
-                </motion.div>
+                </div>
 
                 <button
                   type="button"
                   onClick={() => (
                     scrollToSection('#servicios')
                   )}
-                  className="editorial-scroll mx-auto hidden h-12 w-24 items-center justify-center rounded-full border border-white/10 text-xl text-ice-dim transition hover:border-white/25 hover:text-white md:flex"
+                  className="mx-auto hidden h-12 w-24 items-center justify-center rounded-full border border-white/10 text-xl text-ice-dim transition-colors hover:border-white/25 hover:text-white md:flex"
                   aria-label="Ver servicios"
                 >
                   ↓
                 </button>
 
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 18
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0
-                  }}
-                  transition={{
-                    delay: 0.75,
-                    duration: 0.6
-                  }}
-                  className="md:text-right"
-                >
+                <div className="md:text-right">
                   <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-ice-dim">
                     Síguenos
                   </p>
@@ -616,27 +468,20 @@ function Home() {
                     href="https://instagram.com/bran.hb"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-ice transition hover:text-street-green"
+                    className="inline-flex items-center gap-2 text-sm text-ice transition-colors hover:text-street-green"
                   >
                     <FaInstagram />
 
                     @bran.hb
                   </a>
-                </motion.div>
+                </div>
               </div>
 
-
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-                className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4"
-              >
+              <div className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4">
                 {stats.map((stat, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    variants={fadeInUp}
-                    className="editorial-stat bg-[#0b0b0b]/95 px-4 py-4 sm:px-5"
+                    className="bg-[#0b0b0b] px-4 py-4 sm:px-5"
                   >
                     <div className="mb-1 flex items-center gap-2 text-xs text-ice-dim">
                       <stat.icon className="text-white/65" />
@@ -649,13 +494,13 @@ function Home() {
                     <p className="font-display text-sm font-semibold text-ice sm:text-base">
                       {stat.value}
                     </p>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
 
       {/* ===== SERVICIOS ===== */}
@@ -826,16 +671,22 @@ function Home() {
       </section>
 
 
-      {/* ===== GALERÍA ===== */}
-      <Gallery />
+      {/* ===== CONTENIDO PESADO DIFERIDO ===== */}
+      <div
+        style={{
+          contentVisibility: 'auto',
+          containIntrinsicSize: '2400px'
+        }}
+      >
+        {/* ===== GALERÍA ===== */}
+        <Gallery />
 
+        {/* ===== TESTIMONIOS ===== */}
+        <Testimonials />
 
-      {/* ===== TESTIMONIOS ===== */}
-      <Testimonials />
-
-
-      {/* ===== FAQ ===== */}
-      <FAQ />
+        {/* ===== FAQ ===== */}
+        <FAQ />
+      </div>
 
 
       {/* ===== RESERVAR ===== */}
@@ -1280,7 +1131,7 @@ function Home() {
                 </motion.button>
 
                 <motion.a
-                  href="tel:2461473968"
+                  href="tel:2411327555"
                   whileHover={{
                     scale: 1.05
                   }}
